@@ -7,7 +7,8 @@ const ChatFeed = (props) => {
 
   const chat = chats && chats[activeChat];
 
-  const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
+  const renderReadReceipts = (message, isMyMessage) => {
+    return chat.people.map((person, index) => person.last_read === message.id && (
     <div
       key={`read_${index}`}
       className="read-receipt"
@@ -16,7 +17,8 @@ const ChatFeed = (props) => {
         backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
       }}
     />
-  ));
+    ))
+  }
 
   const renderMessages = () => {
     const keys = Object.keys(messages);
@@ -44,7 +46,7 @@ const ChatFeed = (props) => {
   if (!chat) return <div />;
 
   return (
-    <div className="chat-feed">
+    <div className="chat-feed" style={{backgroundColor: '#2C2F33'}} >
       <div className="chat-title-container">
         <div className="chat-title">{chat?.title}</div>
         <div className="chat-subtitle">
