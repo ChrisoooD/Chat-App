@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState,setState } from 'react';
 import axios from 'axios';
-
+import React from "react";
+import {useHistory} from "react-router-dom"
 const projectID = '1501218f-e751-4570-8896-2549d6c65eaf';
 
 const LoginForm = () => {
+  let history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,8 +21,10 @@ const LoginForm = () => {
       localStorage.setItem('username', username);
       localStorage.setItem('password', password);
 
-      window.location.reload();
+      // window.location.reload();
       setError('');
+      history.push("/chat");
+
     } catch (err) {
       setError('Oops, incorrect credentials.');
     }
@@ -34,7 +38,7 @@ const LoginForm = () => {
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="input" placeholder="Username" required />
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input" placeholder="Password" required />
           <div align="center">
-            <button type="submit" className="button">
+            <button type="submit" className="button" value="Redirect">
               <span>Start chatting</span>
             </button>
           </div>

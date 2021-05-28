@@ -1,22 +1,14 @@
-import { ChatEngine } from 'react-chat-engine';
 import React from "react";
-import ChatFeed from "./components/ChatFeed";
-import LoginForm from "./components/LoginForm";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import './App.css';
-
+import {ROUTES} from "./routes";
 const App = () => {
-    
-    if(!localStorage.getItem('username')) return <LoginForm/>
-    
     return (
-        <ChatEngine
-            height = "100vh"
-            projectID= "1501218f-e751-4570-8896-2549d6c65eaf"
-            userName={localStorage.getItem('username')}
-            userPassword={localStorage.getItem('password')}
-            renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps}/>}
-        />
-        
+        <Router>
+        <Switch>
+            { ROUTES.map((route, index) => <Route key={ index } { ...route }></Route>) }
+        </Switch>
+    </Router>     
     );
 }
 
