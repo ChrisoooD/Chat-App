@@ -42,7 +42,7 @@ const LoginForm = () => {
             <button type="submit" className="button" value="Redirect">
               <span>Start chatting</span>
             </button>
-            <Link to ="/CreateAccount">
+            <Link to ="/account"  type="submit" className="button" value="Redirect" >
             <span>Create Account</span>
             </Link>
           </div>

@@ -2,7 +2,9 @@ import { useState,setState } from 'react';
 import axios from 'axios';
 import React from "react";
 import {useHistory} from "react-router-dom"
-const projectID = '1501218f-e751-4570-8896-2549d6c65eaf';
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+//const projectID = '1501218f-e751-4570-8896-2549d6c65eaf';
+//const privateKey = 'a3f0e6e7-b148-49f8-ac01-49efe673b623';
 
 const CreateAccount = () => {
   let history = useHistory();
@@ -13,17 +15,18 @@ const CreateAccount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const authObject = { 'Project-ID': projectID, 'User-Name': username, 'User-Secret': password };
+    //const authObject = { 'Private-Key': privateKey};
 
     try {
-      await axios.get('https://api.chatengine.io/users/', { headers: authObject });
+      await axios.post('https://api.chatengine.io/users/', {headers: {'PRIVATE-KEY': 'a3f0e6e7-b148-49f8-ac01-49efe673b623'}}, 
+      {data:{"username":username,"secret": password, "email": "", "first_name":"","last_name":"","custom_json":""}});
 
-      localStorage.setItem('username', username);
-      localStorage.setItem('password', password);
+    //   localStorage.setItem('username', username);
+    //   localStorage.setItem('password', password);
 
-      // window.location.reload();
+      //window.location.reload();
       setError('');
-      history.push("/chat");
+      history.push("/account");
 
     } catch (err) {
       setError('Oops, did not creat account.');
@@ -41,6 +44,9 @@ const CreateAccount = () => {
             <button type="submit" className="button" value="Redirect">
               <span>Create</span>
             </button>
+            <Link to ="/signin"  type="submit" className="button" value="Redirect" >
+            <span>sign in</span>
+            </Link>
           </div>
         </form>
         <h1>{error}</h1>
