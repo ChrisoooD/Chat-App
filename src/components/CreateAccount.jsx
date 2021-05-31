@@ -3,9 +3,10 @@ import axios from 'axios';
 import React from "react";
 import {useHistory} from "react-router-dom"
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-const projectID = '1501218f-e751-4570-8896-2549d6c65eaf';
+//const projectID = '1501218f-e751-4570-8896-2549d6c65eaf';
+//const privateKey = 'a3f0e6e7-b148-49f8-ac01-49efe673b623';
 
-const LoginForm = () => {
+const CreateAccount = () => {
   let history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -14,36 +15,37 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const authObject = { 'Project-ID': projectID, 'User-Name': username, 'User-Secret': password };
+    //const authObject = { 'Private-Key': privateKey};
 
     try {
-      await axios.get('https://api.chatengine.io/chats', { headers: authObject });
+      await axios.post('https://api.chatengine.io/users/', {headers: {'PRIVATE-KEY': 'a3f0e6e7-b148-49f8-ac01-49efe673b623'}}, 
+      {data:{"username":username,"secret": password, "email": "", "first_name":"","last_name":"","custom_json":""}});
 
-      localStorage.setItem('username', username);
-      localStorage.setItem('password', password);
+    //   localStorage.setItem('username', username);
+    //   localStorage.setItem('password', password);
 
-      // window.location.reload();
+      //window.location.reload();
       setError('');
       history.push("/chat");
 
     } catch (err) {
-      setError('Oops, incorrect credentials.');
+      setError('Oops, did not creat account.');
     }
   };
 
   return (
     <div className="wrapper">
       <div className="form">
-        <h1 className="title">Chat Application</h1>
+        <h1 className="title">Create Account</h1>
         <form onSubmit={handleSubmit}>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="input" placeholder="Username" required />
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input" placeholder="Password" required />
           <div align="center">
             <button type="submit" className="button" value="Redirect">
-              <span>Start chatting</span>
+              <span>Create</span>
             </button>
-            <Link to ="/" type="submit" className="button" value="Redirect">
-              <button type="submit" className="button" value="Redirect" style={{width:'270px'}}>create</button> 
+            <Link to ="/signin" >
+              <button type="submit" className="button" value="Redirect" >sign in</button>
             </Link>
           </div>
         </form>
@@ -54,4 +56,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default CreateAccount;
