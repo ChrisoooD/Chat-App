@@ -11,26 +11,30 @@ const CreateAccount = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
+  var data = {
+    "username": username,
+    "secret": password,
+  };
+  var config = {
+    method: 'post',
+    url: 'https://api.chatengine.io/users/',
+    headers: {
+      'PRIVATE-KEY': 'a3f0e6e7-b148-49f8-ac01-49efe673b623'
+    },
+    data : data
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     //const authObject = { 'Private-Key': privateKey};
 
-    try {
-      await axios.post('https://api.chatengine.io/users/', {headers: {'PRIVATE-KEY': 'a3f0e6e7-b148-49f8-ac01-49efe673b623'}}, 
-      {data:{"username":username,"secret": password, "email": "", "first_name":"","last_name":"","custom_json":""}});
-
-    //   localStorage.setItem('username', username);
-    //   localStorage.setItem('password', password);
-
-      //window.location.reload();
-      setError('');
-      history.push("/chat");
-
-    } catch (err) {
-      setError('Oops, did not creat account.');
-    }
+    axios(config)
+    .then(function (response) {
+	  console.log(JSON.stringify(response.data));
+    })
+.catch(function (error) {
+	console.log(error);
+});
   };
 
   return (
