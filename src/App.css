@@ -4,19 +4,26 @@
       Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
       Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     letter-spacing: 0.5px;
+    /* dark theme code*/
+    /* background-color: #2C2F33!important;
+    color:white; */
   }
   
   .ce-chat-list {
-    background-color: rgb(240, 240, 240) !important;
+    /* light theme */
+    background-color: rgb(240, 240, 240);
   }
   
   .ce-chats-container {
-    background-color: rgb(240, 240, 240) !important;
+    /*light theme */
+    background-color: rgb(240, 240, 240);
   }
   
   .ce-active-chat-card {
-    background-color: #cabcdc !important;
-    border: 4px solid #cabcdc !important;
+    /* light theme */
+    background-color: #84f588 !important;
+    border: 4px solid #84f588 !important;
+   
     border-radius: 0px !important;
   }
   
@@ -46,7 +53,8 @@
   }
   
   .ce-settings {
-    background-color: rgb(240, 240, 240) !important;
+    /* light theme */
+    background-color: rgb(240, 240, 240);
   }
   
   .ce-autocomplete-input {
@@ -84,13 +92,13 @@
   }
   
   .chat-title {
-    color: #FFFFFF;
+    /* color: black; */
     font-weight: 800;
     font-size: 24px;
   }
   
   .chat-subtitle {
-    color: #FFFFFF;
+    /* color: black; */
     font-weight: 600;
     font-size: 12px;
     padding-top: 4px;
@@ -124,6 +132,7 @@
     font-size: 16px;
     border-radius: 6px;
     max-width: 60%;
+    background-color: #7289da !important;
   }
   
   .message-image {

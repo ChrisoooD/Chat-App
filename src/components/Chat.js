@@ -21,13 +21,16 @@ const Chat = () => {
                     Log out 
                 </div>
             </div>
-        <ChatEngine
+            
+            <ChatEngine
             height = "100vh"
             projectID= "1501218f-e751-4570-8896-2549d6c65eaf"
             userName={localStorage.getItem('username')}
             userPassword={localStorage.getItem('password')}
             renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps}/>}
-        />
+            />
+            
+        
 
         </div>
          

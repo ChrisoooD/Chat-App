@@ -47,7 +47,7 @@ const ChatFeed = (props) => {
   if (!chat) return <div />;
 
   return (
-    <div className="chat-feed" style={{backgroundColor: '#2C2F33'}} >
+    <div className="chat-feed" >
       <div className="chat-title-container">
         <div className="chat-title">{chat?.title}</div>
         <div className="chat-subtitle">
