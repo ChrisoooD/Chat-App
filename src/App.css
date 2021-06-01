@@ -4,27 +4,20 @@
       Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
       Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     letter-spacing: 0.5px;
-    /* dark theme code*/
-    /* background-color: #2C2F33!important;
-    color:white; */
   }
  
   
   .ce-chat-list {
-    /* light theme */
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(240, 240, 240) !important;
   }
   
   .ce-chats-container {
-    /*light theme */
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(240, 240, 240) !important;
   }
   
   .ce-active-chat-card {
-    /* light theme */
     background-color: #84f588 !important;
     border: 4px solid #84f588 !important;
-   
     border-radius: 0px !important;
   }
   
@@ -54,8 +47,7 @@
   }
   
   .ce-settings {
-    /* light theme */
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(240, 240, 240) !important;
   }
   
   .ce-autocomplete-input {
