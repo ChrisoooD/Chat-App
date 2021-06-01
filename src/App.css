@@ -8,6 +8,7 @@
     /* background-color: #2C2F33!important;
     color:white; */
   }
+ 
   
   .ce-chat-list {
     /* light theme */
@@ -311,7 +312,7 @@
   }
   .logo-tab {
     position: absolute;
-    left: 22px;
+    left: 1em;
     top: 12px;
     font-size: 32px;
     font-weight: 700;
@@ -320,7 +321,15 @@
   .logout-tab {
     position: absolute;
     top: 12px;
-    right: 22px;
+    right: 1em;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+  }
+  .theme{
+    position: absolute;
+    top: 12px;
+    left: 35em;
     font-size: 26px;
     color: white;
     cursor: pointer;

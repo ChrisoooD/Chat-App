@@ -5,17 +5,38 @@ import ChatFeed from "./ChatFeed";
 const Chat = () => {
 
     let history = useHistory();
-
+    let lightTheme = true;
     const handleLogOut = ()=>{
         localStorage.clear();
         history.push('/signin');
     }
+    
+    const changeTheme =() =>{
+        let elems = document.querySelector('*');
+        if(lightTheme){
+            elems.style.color = "white";
+            elems.style.backgroundColor ="black";
+        }
+        else{
+            elems.style.color = "black";
+            elems.style.backgroundColor ="white";
+        }
+        
+        
+        lightTheme = !lightTheme; 
+    }
+
+
+
     
     return (
         <div>
             <div className='nav-bar'>
                 <div className ='logo-tab'>
                     Chatting Software
+                </div>
+                <div onClick={changeTheme} className ="theme">
+                     Change Theme
                 </div>
                 <div onClick= {handleLogOut}className="logout-tab">
                     Log out 
@@ -24,7 +45,7 @@ const Chat = () => {
             
             <ChatEngine
             height = "100vh"
-            projectID= "1501218f-e751-4570-8896-2549d6c65eaf"
+            projectID= {process.env.REACT_APP_CHAT_ID}
             userName={localStorage.getItem('username')}
             userPassword={localStorage.getItem('password')}
             renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps}/>}

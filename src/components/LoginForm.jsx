@@ -3,7 +3,6 @@ import axios from 'axios';
 import React from "react";
 import {useHistory} from "react-router-dom"
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-const projectID = '1501218f-e751-4570-8896-2549d6c65eaf';
 
 const LoginForm = () => {
   let history = useHistory();
@@ -14,7 +13,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const authObject = { 'Project-ID': projectID, 'User-Name': username, 'User-Secret': password };
+    const authObject = { 'Project-ID': process.env.REACT_APP_CHAT_ID, 'User-Name': username, 'User-Secret': password };
 
     try {
       await axios.get('https://api.chatengine.io/chats', { headers: authObject });
@@ -22,7 +21,6 @@ const LoginForm = () => {
       localStorage.setItem('username', username);
       localStorage.setItem('password', password);
 
-      // window.location.reload();
       setError('');
       history.push("/chat");
 
