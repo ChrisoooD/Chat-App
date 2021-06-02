@@ -8,10 +8,16 @@ const CreateAccount = () => {
   let history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [firstname, setfirstname] = useState('');
+  const [lastname, setlastname] = useState('');
   const [error, setError] = useState('');
   var data = {
     "username": username,
     "secret": password,
+    "email": email,
+	  "first_name": firstname,
+	  "last_name": lastname
   };
   var config = {
     method: 'post',
@@ -40,6 +46,9 @@ const CreateAccount = () => {
         <form onSubmit={handleSubmit}>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="input" placeholder="Username" required />
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input" placeholder="Password" required />
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="input" placeholder="Email" required />
+          <input type="text" value={firstname} onChange={(e) => setfirstname(e.target.value)} className="input" placeholder="First Name" required />
+          <input type="text" value={lastname} onChange={(e) => setlastname(e.target.value)} className="input" placeholder="Last Name" required />
           <div align="center">
             <button type="submit" className="button" value="Redirect">
               <span>Create</span>
