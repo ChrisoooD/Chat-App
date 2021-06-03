@@ -5,7 +5,8 @@ import axios from 'axios';
 export class Profile extends React.Component{
 
     state={
-        username:'Peter',
+        id: localStorage.getItem('id'),
+        username:'',
         email:'',
         firstName:'',
         lastName:''
@@ -17,43 +18,30 @@ export class Profile extends React.Component{
     componentDidMount() {
         var un = localStorage.getItem("username");
         var p = localStorage.getItem("password");
-        var firstn;
-        const authObject = { 'Project-ID': process.env.REACT_APP_CHAT_ID, 'User-Name': un, 'User-Secret': p, "First-Name": firstn };
+        
+        const authObject = { 'Project-ID': process.env.REACT_APP_CHAT_ID, 'User-Name': un, 'User-Secret': p, };
 
-        console.log("First name",firstn);
+        
 
         var config = {
             method: 'get',
-            url: 'https://api.chatengine.io/users/',
+            url: 'https://api.chatengine.io/users/{{this.state.id}}/',
             headers: {
               'PRIVATE-KEY': process.env.REACT_APP_CHAT_KEY
             },
             data : authObject
           };
+          console.log("ID",this.state.id);
 
-          try {
-            axios.get('https://api.chatengine.io/chats', { headers: authObject });
-            this.setState({
-                username: un,
-                // firstName: res.data[0].first_name
-            })
+          axios(config)
+            .then(function (response) {
+	        console.log(response);
             console.log("success");
-          } catch (err) {
+            })
+        .catch(function (error) {
+            console.log(error);
             console.log("failure");
-          }
-
-        //   axios(config)
-        //     .then(function (response) {
-	    //     console.log(JSON.stringify(response.data));
-        //     this.setState({
-        //         username: un
-        //     })
-        //     console.log("success");
-        //     })
-        // .catch(function (error) {
-        //     console.log(error);
-        //     console.log("failure");
-        //     });
+            });
 
     }
     render(){

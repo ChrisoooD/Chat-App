@@ -13,17 +13,21 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const authObject = { 'Project-ID': process.env.REACT_APP_CHAT_ID, 'User-Name': username, 'User-Secret': password };
+    const authObject = { 'Project-ID': process.env.REACT_APP_CHAT_ID, 'User-Name': username, 'User-Secret': password};
 
     try {
-      await axios.get('https://api.chatengine.io/chats', { headers: authObject });
-
-      localStorage.setItem('username', username);
-      localStorage.setItem('password', password);
-
-      setError('');
-      history.push("/chat");
-
+      await axios.get('https://api.chatengine.io/chats', { headers: authObject })
+      .then(response =>{
+        console.log(response);
+        console.log(response.data[0].id)
+        var userID = response.data[0].id;
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+        localStorage.setItem('id',userID);
+        setError('');
+        history.push("/chat");
+      }
+      )
     } catch (err) {
       setError('Oops, incorrect credentials.');
     }
