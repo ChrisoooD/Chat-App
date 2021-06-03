@@ -2,6 +2,7 @@ import React from "react";
 import { ChatEngine } from 'react-chat-engine';
 import { useHistory } from "react-router";
 import ChatFeed from "./ChatFeed";
+import {Link} from "react-router-dom"
 const Chat = () => {
 
     let history = useHistory();
@@ -10,6 +11,10 @@ const Chat = () => {
         localStorage.clear();
         history.push('/signin');
     }
+
+    const toProfile =()=>{
+        history.push('/profile');
+    }
     
     return (
         <div>
@@ -17,6 +22,11 @@ const Chat = () => {
                 <div className ='logo-tab'>
                     Chatting Software
                 </div>
+                <Link to='/profile' className="profile-tab">Profile
+                </Link>
+                {/* <div onClick= {toProfile}className="profile-tab">
+                    Profile
+                </div> */}
                 <div onClick= {handleLogOut}className="logout-tab">
                     Log out 
                 </div>

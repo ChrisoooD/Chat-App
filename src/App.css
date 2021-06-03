@@ -310,10 +310,26 @@
     font-weight: 700;
     color: white;
   }
+  .back-tab{
+    position: absolute;
+    top: 12px;
+    left: 1em;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+  }
   .logout-tab {
     position: absolute;
     top: 12px;
     right: 1em;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+  }
+  .profile-tab {
+    position: absolute;
+    top: 12px;
+    right: 7em;
     font-size: 26px;
     color: white;
     cursor: pointer;
@@ -325,4 +341,9 @@
     font-size: 26px;
     color: white;
     cursor: pointer;
+  }
+  .profile-text{
+    position: relative;
+    font-size: 24px;
+    margin: 2em;
   }
