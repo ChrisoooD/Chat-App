@@ -24,9 +24,7 @@ const Chat = () => {
                 </div>
                 <Link to='/profile' className="profile-tab">Profile
                 </Link>
-                {/* <div onClick= {toProfile}className="profile-tab">
-                    Profile
-                </div> */}
+                
                 <div onClick= {handleLogOut}className="logout-tab">
                     Log out 
                 </div>

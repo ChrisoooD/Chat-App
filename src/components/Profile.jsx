@@ -4,44 +4,68 @@ import {Link} from "react-router-dom"
 import axios from 'axios';
 export class Profile extends React.Component{
 
-    state={
-        id: localStorage.getItem('id'),
-        username:'',
-        email:'',
-        firstName:'',
-        lastName:''
-    };
+    
+
+    constructor(props) {
+        super(props);
+    
+        this.state={
+            id: localStorage.getItem('id'),
+            username:'',
+            email:'',
+            firstName:'',
+            lastName:''
+        };
+    
+        // this.delta = this.delta.bind(this);
+    }
 
     handleLogOut = ()=>{
         localStorage.clear();
     }
     componentDidMount() {
+        var axios = require('axios');
         var un = localStorage.getItem("username");
         var p = localStorage.getItem("password");
-        
-        const authObject = { 'Project-ID': process.env.REACT_APP_CHAT_ID, 'User-Name': un, 'User-Secret': p, };
-
-        
-
+        var UserName="";
+        var Email="";
+        var FirstName="";
+        var LastName="";
+        const profileData ={ 'User-Name': un, 'User-Secret': p};
+        var temp = 'https://api.chatengine.io/users/' +this.state.id +'/';
         var config = {
             method: 'get',
-            url: 'https://api.chatengine.io/users/{{this.state.id}}/',
+            url: temp,
             headers: {
               'PRIVATE-KEY': process.env.REACT_APP_CHAT_KEY
             },
-            data : authObject
+            data: profileData
           };
-          console.log("ID",this.state.id);
+         
 
-          axios(config)
+        axios(config)
             .then(function (response) {
-	        console.log(response);
+            console.log(JSON.stringify(response.data));
             console.log("success");
+            console.log("LOG",response.data.username);
+            UserName = response.data.username;
+            Email = response.data.email;
+            FirstName = response.data.first_name;
+            LastName = response.data.last_name;
+
+            
             })
         .catch(function (error) {
             console.log(error);
             console.log("failure");
             });
+
+            // this.setState({
+            //     username: UserName,
+            //     email: Email,
+            //     firstName: FirstName,
+            //     lastName: LastName
+            // })
 
     }
     render(){

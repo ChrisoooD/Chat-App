@@ -19,18 +19,56 @@ const LoginForm = () => {
       await axios.get('https://api.chatengine.io/chats', { headers: authObject })
       .then(response =>{
         console.log(response);
-        console.log(response.data[0].id)
-        var userID = response.data[0].id;
+        
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
-        localStorage.setItem('id',userID);
         setError('');
+
+        const profileData ={ 'User-Name': username, 'User-Secret': password};
+        var config = {
+            method: 'get',
+            url: 'https://api.chatengine.io/users/',
+            headers: {
+              'PRIVATE-KEY': process.env.REACT_APP_CHAT_KEY
+            },
+            data: profileData
+          };
+         
+
+        axios(config)
+            .then(function (response) {
+            
+            var myArray = response.data;
+
+            myArray.forEach((element, index, array) => {
+              
+              if(element.username ==username){
+                localStorage.setItem('id', element.id);
+                // console.log("FOUND");
+                // console.log(element.id)
+              }
+            });
+
+  
+            console.log("success");
+          
+
+            })
+        .catch(function (error) {
+            console.log(error);
+            console.log("failure");
+            });
+
+            
         history.push("/chat");
+
       }
       )
     } catch (err) {
       setError('Oops, incorrect credentials.');
     }
+
+
   };
 
   return (
