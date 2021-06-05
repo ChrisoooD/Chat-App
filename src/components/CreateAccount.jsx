@@ -32,6 +32,12 @@ const CreateAccount = () => {
     axios(config)
     .then(function (response) {
 	  console.log(JSON.stringify(response.data));
+    localStorage.setItem("username",username);
+    localStorage.setItem("password",password);
+    localStorage.setItem("email",email);
+    localStorage.setItem("firstName",firstname);
+    localStorage.setItem("lastName",lastname);
+
     history.push('/chat');
     })
 .catch(function (error) {
