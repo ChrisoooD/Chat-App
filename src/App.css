@@ -344,6 +344,20 @@
   }
   .profile-text{
     position: relative;
-    font-size: 24px;
+    left: 40%;
     margin: 2em;
+    font-size: 30px;
+  }
+  .profile-pic{
+    position:absolute;
+    left: 5px;
+    top: 4em;
+    font-size: 30px;
+    width:20%;
+    height:20%;
+  }
+
+  .avatar{
+    width:150%;
+    height:150%;
   }

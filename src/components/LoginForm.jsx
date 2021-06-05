@@ -38,18 +38,26 @@ const LoginForm = () => {
         axios(config)
             .then(function (response) {
             
+              console.log("RESPONSE",response.data.avatar);
+            
             var myArray = response.data;
 
             myArray.forEach((element, index, array) => {
               
               if(element.username ==username){
+                console.log("RESPONSE",element.avatar);
                 localStorage.setItem('id', element.id);
+                localStorage.setItem('email', element.email);
+                localStorage.setItem('firstName', element.first_name);
+                localStorage.setItem('lastName', element.last_name);
+                localStorage.setItem('imageURL', element.avatar);
                 // console.log("FOUND");
                 // console.log(element.id)
               }
             });
 
   
+            
             console.log("success");
           
 
@@ -58,7 +66,6 @@ const LoginForm = () => {
             console.log(error);
             console.log("failure");
             });
-
             
         history.push("/chat");
 
