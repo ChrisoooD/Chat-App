@@ -12,9 +12,7 @@ const Chat = () => {
         history.push('/signin');
     }
 
-    const toProfile =()=>{
-        history.push('/profile');
-    }
+    
     
     return (
         <div>
