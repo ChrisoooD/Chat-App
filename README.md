@@ -10,6 +10,10 @@ We build our app with help from the video tutorial from Javascript Mastery in Yo
 
 In the project directory, you can run:
 
+### `npm install`
+
+Installs all dependencies required for this project.
+
 ### `npm start`
 
 Runs the app in the development mode.\
