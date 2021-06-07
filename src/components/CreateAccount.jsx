@@ -27,6 +27,7 @@ const CreateAccount = () => {
     },
     data : data
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios(config)
@@ -37,7 +38,7 @@ const CreateAccount = () => {
     localStorage.setItem("email",email);
     localStorage.setItem("firstName",firstname);
     localStorage.setItem("lastName",lastname);
-
+    localStorage.setItem('imageURL', "null");
     history.push('/chat');
     })
 .catch(function (error) {
@@ -55,7 +56,7 @@ const CreateAccount = () => {
           <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="input" placeholder="Email" required />
           <input type="text" value={firstname} onChange={(e) => setfirstname(e.target.value)} className="input" placeholder="First Name" required />
           <input type="text" value={lastname} onChange={(e) => setlastname(e.target.value)} className="input" placeholder="Last Name" required />
-          <input type="file" accept="image/*"></input>
+
           <div align="center">
             <button type="submit" className="button" value="Redirect">
               <span>Create</span>

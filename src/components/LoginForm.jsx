@@ -38,14 +38,14 @@ const LoginForm = () => {
         axios(config)
             .then(function (response) {
             
-              console.log("RESPONSE",response.data.avatar);
+              // console.log("RESPONSE",response.data.avatar);
             
             var myArray = response.data;
 
             myArray.forEach((element, index, array) => {
-              
+              console.log("RESPONSEa",element.avatar);
               if(element.username ==username){
-                console.log("RESPONSE",element.avatar);
+                // console.log("RESPONSE",element.avatar);
                 localStorage.setItem('id', element.id);
                 localStorage.setItem('email', element.email);
                 localStorage.setItem('firstName', element.first_name);

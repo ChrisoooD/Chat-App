@@ -6,6 +6,14 @@ export class Profile extends React.Component{
 
     constructor(props) {
         super(props);
+
+        var url;
+        if(localStorage.getItem('imageURL')=="null"){
+            url = "https://via.placeholder.com/250";
+        }
+        else {
+            url = localStorage.getItem('imageURL');
+        }
     
         this.state={
             id: localStorage.getItem('id'),
@@ -13,7 +21,7 @@ export class Profile extends React.Component{
             email:localStorage.getItem('email'),
             firstName: localStorage.getItem('firstName'),
             lastName:localStorage.getItem('lastName'),
-            imageURL: localStorage.getItem('imageURL')
+            imageURL: url
         };
     }
 
