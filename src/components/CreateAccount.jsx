@@ -1,8 +1,8 @@
-import { useState,setState } from 'react';
+import { useState} from 'react';
 import axios from 'axios';
 import React from "react";
 import {useHistory} from "react-router-dom"
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const CreateAccount = () => {
   let history = useHistory();
@@ -11,7 +11,7 @@ const CreateAccount = () => {
   const [email, setEmail] = useState('');
   const [firstname, setfirstname] = useState('');
   const [lastname, setlastname] = useState('');
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
   var data = {
     "username": username,
     "secret": password,
@@ -66,7 +66,6 @@ const CreateAccount = () => {
             </Link>
           </div>
         </form>
-        <h1>{error}</h1>
       </div>
     </div>
 

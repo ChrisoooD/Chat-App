@@ -1,8 +1,8 @@
-import { useState,setState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import React from "react";
 import {useHistory} from "react-router-dom"
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const LoginForm = () => {
   let history = useHistory();
@@ -43,7 +43,6 @@ const LoginForm = () => {
             var myArray = response.data;
 
             myArray.forEach((element, index, array) => {
-              console.log("RESPONSEa",element.avatar);
               if(element.username ==username){
                 // console.log("RESPONSE",element.avatar);
                 localStorage.setItem('id', element.id);

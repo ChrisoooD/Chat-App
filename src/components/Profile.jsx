@@ -1,14 +1,12 @@
 import React from 'react';
-import { useHistory } from "react-router";
 import {Link} from "react-router-dom"
-import axios from 'axios';
 export class Profile extends React.Component{
 
     constructor(props) {
         super(props);
 
         var url;
-        if(localStorage.getItem('imageURL')=="null"){
+        if(localStorage.getItem('imageURL')==="null"){
             url = "https://via.placeholder.com/250";
         }
         else {
