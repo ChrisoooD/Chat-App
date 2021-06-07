@@ -20,4 +20,5 @@ Here is the URL: https://www.youtube.com/watch?v=jcOKU9f86XE&t=258s
 
 This is a video tutorial about creating a chatting software using chatengine.io by Javascript mastery. 
 
+## Available Functionalities
 This chatting software is capable of adding users and creating chat groups for multiple people. By clicking the "+" once logged in, you will be able to create new chats and add new persons. Since we are using the free plan, there might be a 1 second delay in sending messages. Additionally, you can only have up to 25 accounts at the same time. We already have some users created with the information in the login-credential.txt. The person who created the chat is the administrator of the group. For example, admin is the administrator of the master chat group. And userA is the administrator of the next chat.
