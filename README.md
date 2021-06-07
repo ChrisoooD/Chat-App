@@ -1,6 +1,7 @@
-# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This project also uses third parties api from https://chatengine.io/. 
 
 We build our app with help from the video tutorial from Javascript Mastery in Youtube. The link can be found below. 
 
